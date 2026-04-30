@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title TennisClub</title>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <script src="{{asset('js/app.js')}}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <ul class="nav navbar-nav">
+            <li><a href="{{route('members.index')}}">Members</a></li>
+            <li><a href="{{route('members.create')}}">New Member</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
+            @if(Auth::check())
+                @if(Auth::user()->hasRole('System Admin'))
+                    @include('layouts.adminmenu')
+                @endif
+                <li><a href="{!! route('logout') !!}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            @else
+                <li><a href="{!! route('login') !!}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="{!! route('register') !!}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+            @endif
+        </ul>
+    </nav>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8"> @yield('content') </div>
+                <div class="col-lg-2"></div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
