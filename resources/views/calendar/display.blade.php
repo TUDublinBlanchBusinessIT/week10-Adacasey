@@ -12,11 +12,10 @@
                 left: 'prev,next today',
                 center: 'title'
             },
+            slotDuration: '00:10:00',
+            initialDate: '2017-01-01',
             editable: true,
-            events: [ 
-                { title: 'All Day Event', start: '2023-02-20' },
-                { title: 'Long Event', start: '2023-02-22', end: '2023-02-25' } 
-            ],
+            events: '{!! route("calendar.json") !!}'
         });
         calendar.render();
     });

@@ -36,5 +36,6 @@ Route::delete('/bookings/{booking}','App\Http\Controllers\bookingController@dest
 Route::delete('/members/{member}','App\Http\Controllers\memberController@destroy')->name('members.destroy')->middleware('permission:Delete Member');
 
 Route::get('/calendar/display', 'App\Http\Controllers\calendarController@display')->name('calendar.display');
+Route::get('/calendar/json','App\Http\Controllers\calendarController@json')->name('calendar.json');
 
 require __DIR__.'/auth.php';
