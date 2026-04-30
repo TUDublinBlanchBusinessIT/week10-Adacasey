@@ -35,4 +35,6 @@ Route::group(['middleware' => ['permission:Create New Member']], function () {
 Route::delete('/bookings/{booking}','App\Http\Controllers\bookingController@destroy')->name('bookings.destroy')->middleware('permission:Delete Booking');
 Route::delete('/members/{member}','App\Http\Controllers\memberController@destroy')->name('members.destroy')->middleware('permission:Delete Member');
 
+Route::get('/calendar/display', 'App\Http\Controllers\calendarController@display')->name('calendar.display');
+
 require __DIR__.'/auth.php';
