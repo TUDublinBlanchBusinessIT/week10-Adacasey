@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class member
  * @package App\Models
- * @version February 24, 2025, 3:19 pm UTC
+ * @version May 1, 2026, 8:01 pm UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection $bookings
  * @property string $firstname
